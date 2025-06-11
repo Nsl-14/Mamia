@@ -3,19 +3,16 @@ FROM python:3.10-slim-buster
 # Set the working directory in the container to /app
 WORKDIR /app
 
-# Install git
-RUN apt-get update && apt-get install -y git
-
-# Clone the repository
-RUN git clone https://github.com/Nsl-14/Mamia
-
-# Copy the local config.json file to the container
+# Copy requirements.txt first (better for Docker caching)
+COPY requirements.txt .
 
 # Install any needed packages specified in requirements.txt
 RUN pip install --no-cache-dir -r requirements.txt
 
+# Copy all your application files
+COPY . .
 
 EXPOSE 8888
 
-# Run run.py when the container launches
-CMD ["uvicorn", "run:main_app", "--host", "0.0.0.0", "--port", "8888", "--workers", "4"]
+# Run your application (adjust this based on your actual app structure)
+CMD ["python", "run.py"]
