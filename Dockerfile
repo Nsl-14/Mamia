@@ -14,5 +14,5 @@ COPY . .
 
 EXPOSE 8888
 
-# Run your application (adjust this based on your actual app structure)
+# Run your application 
 CMD ["python", "run.py"]
