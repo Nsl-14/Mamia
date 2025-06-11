@@ -24,7 +24,7 @@ RUN rm -rf temp_mediaflow temp_hfmfp
 # Install any needed packages specified in requirements.txt
 RUN pip install --no-cache-dir -r requirements.txt
 
-EXPOSE 7860
+EXPOSE 8888
 
 # Run run.py when the container launches
-CMD ["uvicorn", "run:main_app", "--host", "0.0.0.0", "--port", "7860", "--workers", "4"]
+CMD ["uvicorn", "run:main_app", "--host", "0.0.0.0", "--port", "8888", "--workers", "4"]
